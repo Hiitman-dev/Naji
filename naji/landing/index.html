@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ناجی — نگهبان خاموشی برق | قبل از قطع، خودش خاموش می‌کند</title>
+<meta name="description" content="ناجی خاموشی‌های برق را از برق‌من می‌خواند، چند دقیقه قبل از قطعی خبرتان می‌کند و اگر نباشید، خودش سیستم را خاموش یا خواب می‌کند. رایگان و متن‌باز برای ویندوز.">
+<!--
+  ⚠️ قبل از انتشار: آدرس ریپو را در ثابت RELEASE_URL (پایینِ فایل) عوض کنید.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Aura Glass for web — هم‌خانواده‌ی تم خودِ برنامه ---------- */
+  :root {
+    --bg-top: #0d0f14;
+    --bg-bottom: #090b0f;
+    --glass: rgba(26, 29, 41, 0.72);
+    --glass-strong: rgba(33, 37, 52, 0.88);
+    --glass-border: rgba(255, 255, 255, 0.10);
+    --text: #eceef7;
+    --text2: #9aa0b8;
+    --text3: #5f6680;
+    --accent: #7b5cff;
+    --accent2: #3ad4bc;
+    --grad1: #8f6fff;
+    --grad2: #7b5cff;
+    --grad3: #4a35c2;
+    --danger: #ff6b7d;
+    --amber: #f5b851;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Vazirmatn", sans-serif;
+    background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+    color: var(--text);
+    line-height: 1.9;
+    overflow-x: hidden;
+  }
+  /* نور تک‌فام بالای بوم — مثل BackdropCanvas برنامه */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background: radial-gradient(60% 42% at 50% -8%, rgba(123, 92, 255, 0.22), transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  .latin { font-family: "Space Grotesk", sans-serif; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* ---------- ناوبری ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    background: rgba(13, 15, 20, 0.72);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .nav-in { display: flex; align-items: center; gap: 14px; padding: 14px 0; }
+  .logo {
+    width: 40px; height: 40px; border-radius: 13px; flex: none;
+    background: linear-gradient(135deg, var(--grad1), var(--grad2) 55%, var(--grad3));
+    display: grid; place-items: center;
+    box-shadow: 0 8px 24px rgba(123, 92, 255, 0.35);
+  }
+  .logo svg { width: 22px; height: 22px; }
+  .brand { font-weight: 900; font-size: 19px; }
+  .brand small { display: block; font-size: 10.5px; color: var(--text3); font-weight: 600; line-height: 1.4; }
+  nav .spacer { flex: 1; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    border-radius: 14px; padding: 12px 22px; font-weight: 800; font-size: 15px;
+    text-decoration: none; transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    border: 1px solid transparent; cursor: pointer;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--grad1), var(--grad2) 55%, var(--grad3));
+    color: #fff; box-shadow: 0 10px 30px rgba(123, 92, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+  }
+  .btn-ghost {
+    background: var(--glass); color: var(--text);
+    border-color: var(--glass-border);
+  }
+  .btn-ghost:hover { border-color: var(--accent); }
+  .btn-sm { padding: 9px 16px; font-size: 13.5px; border-radius: 12px; }
+
+  /* ---------- هیرو ---------- */
+  header { padding: 84px 0 30px; text-align: center; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(123, 92, 255, 0.14); border: 1px solid rgba(123, 92, 255, 0.35);
+    color: #c9b8ff; border-radius: 999px; padding: 7px 16px;
+    font-size: 13px; font-weight: 700; margin-bottom: 26px;
+  }
+  .chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); box-shadow: 0 0 12px var(--accent2); }
+  h1 {
+    font-size: clamp(30px, 5.4vw, 54px); font-weight: 900; line-height: 1.5;
+    letter-spacing: -0.5px;
+  }
+  h1 .grad {
+    background: linear-gradient(120deg, var(--grad1), #b9a5ff 45%, var(--accent2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .sub {
+    color: var(--text2); font-size: clamp(15px, 2vw, 18.5px);
+    max-width: 640px; margin: 18px auto 34px;
+  }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta-note { color: var(--text3); font-size: 12.5px; margin-top: 14px; }
+
+  /* ---------- قاب اسکرین‌شات ---------- */
+  .shot-frame {
+    margin: 46px auto 0; max-width: 880px; border-radius: 22px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    padding: 10px; position: relative;
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(123, 92, 255, 0.12);
+  }
+  .shot-frame img { width: 100%; border-radius: 14px; display: block; }
+  .shot-frame .glow {
+    position: absolute; inset: -40px; z-index: -1; border-radius: 40px;
+    background: radial-gradient(50% 55% at 50% 30%, rgba(123, 92, 255, 0.30), transparent 70%);
+  }
+
+  /* ---------- سکشن‌ها ---------- */
+  section { padding: 72px 0; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 4px; color: var(--accent);
+    font-weight: 700; margin-bottom: 10px;
+  }
+  .rtl-eyebrow { font-size: 13px; letter-spacing: 0; color: var(--text3); font-weight: 800; }
+  h2 { font-size: clamp(24px, 3.4vw, 34px); font-weight: 900; margin-bottom: 12px; }
+  .sec-sub { color: var(--text2); max-width: 560px; margin-bottom: 40px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 20px; padding: 26px 22px;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(123, 92, 255, 0.45); }
+  .f-icon {
+    width: 46px; height: 46px; border-radius: 50%;
+    display: grid; place-items: center; margin-bottom: 16px;
+  }
+  .f-icon svg { width: 24px; height: 24px; }
+  .card h3 { font-size: 16.5px; font-weight: 800; margin-bottom: 6px; }
+  .card p { color: var(--text2); font-size: 13.8px; }
+
+  /* ---------- گالری ---------- */
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .shot {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 18px; padding: 8px; transition: transform .2s ease;
+  }
+  .shot:hover { transform: translateY(-4px) scale(1.01); }
+  .shot img { width: 100%; border-radius: 12px; display: block; }
+  .shot figcaption { text-align: center; color: var(--text3); font-size: 12.5px; padding: 10px 4px 6px; }
+
+  /* ---------- مراحل ---------- */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; counter-reset: step; }
+  .step {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 20px; padding: 26px 22px; position: relative;
+  }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; top: -16px; inset-inline-start: 20px;
+    width: 36px; height: 36px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--grad1), var(--grad3));
+    display: grid; place-items: center; font-weight: 900; font-size: 17px;
+    box-shadow: 0 8px 20px rgba(123, 92, 255, 0.4);
+  }
+  .step h3 { margin-top: 10px; font-size: 15.5px; font-weight: 800; margin-bottom: 6px; }
+  .step p { color: var(--text2); font-size: 13.5px; }
+
+  /* ---------- FAQ ---------- */
+  details {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 16px; padding: 18px 22px; margin-bottom: 10px;
+  }
+  details[open] { border-color: rgba(123, 92, 255, 0.4); }
+  summary { cursor: pointer; font-weight: 800; font-size: 15px; list-style: none; }
+  summary::after { content: "+"; float: left; color: var(--accent); font-size: 20px; font-weight: 400; }
+  details[open] summary::after { content: "−"; }
+  details p { color: var(--text2); font-size: 13.8px; margin-top: 10px; }
+
+  /* ---------- CTA پایانی ---------- */
+  .final {
+    text-align: center; border-radius: 26px; padding: 64px 28px;
+    background:
+      radial-gradient(70% 90% at 50% 0%, rgba(123, 92, 255, 0.25), transparent 70%),
+      var(--glass);
+    border: 1px solid rgba(123, 92, 255, 0.35);
+  }
+  .final h2 { margin-bottom: 8px; }
+  .final p { color: var(--text2); margin-bottom: 28px; }
+
+  footer { padding: 34px 0 44px; text-align: center; color: var(--text3); font-size: 12.5px; }
+  footer .heart { color: var(--danger); }
+
+  @media (max-width: 640px) {
+    header { padding-top: 56px; }
+    section { padding: 52px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66l.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z" fill="#fff"/></svg>
+    </div>
+    <div class="brand">ناجی<small class="latin">POWER GUARD · v6.0</small></div>
+    <div class="spacer"></div>
+    <a class="btn btn-ghost btn-sm" href="#shots">تصاویر</a>
+    <a class="btn btn-ghost btn-sm" href="#faq">سوالات</a>
+    <a class="btn btn-primary btn-sm" href="#download">دانلود رایگان</a>
+  </div>
+</nav>
+
+<header class="wrap">
+  <div class="chip"><span class="dot"></span> متن‌باز · بدون اکانت ابری · فقط ویندوز</div>
+  <h1>قبل از اینکه برق بره،<br><span class="grad">ناجی خودش خاموشش می‌کنه</span></h1>
+  <p class="sub">
+    ناجی خاموشی‌های محله‌ی شما را از سرویس رسمی «برق‌من» می‌خواند، چند دقیقه قبل از هر قطعی
+    با اعلان و صدا خبرتان می‌کند — و اگر سر کار یا خواب باشید، خودش سیستم را خاموش، خواب یا
+    خواب‌زمستانی می‌کند تا داده‌ها و سخت‌افزارتان سالم بمانند.
+  </p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#download">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3.4v10.4M6.9 9.4l5.1 5.2 5.1-5.2" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="3.8" y="17.7" width="16.4" height="3.7" rx="1.85" fill="rgba(255,255,255,0.9)"/></svg>
+      دانلود از گیت‌هاب
+    </a>
+    <a class="btn btn-ghost" href="#how">چطور کار می‌کند؟</a>
+  </div>
+  <p class="cta-note">ویندوز ۱۰ و ۱۱ · نصاب فارسی · زیر ۲۰ مگابایت</p>
+
+  <div class="shot-frame">
+    <div class="glow"></div>
+    <img src="assets/fa_dark_dashboard.png" alt="داشبورد ناجی در تم تیره — شمارش معکوس تا قطعی بعدی" loading="eager">
+  </div>
+</header>
+
+<!-- ---------- ویژگی‌ها ---------- -->
+<section id="features" class="wrap">
+  <div class="rtl-eyebrow">چرا ناجی؟</div>
+  <h2>یک نگهبان کوچک، خیالِ کامل</h2>
+  <p class="sec-sub">همه‌ی چیزهایی که ناجی را از یک «چکر خاموشی» ساده متمایز می‌کند.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="f-icon" style="background:rgba(245,184,81,.16)">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6c-3.3 0-5.6 2.5-5.6 5.9v3.1c0 .6-.2 1.2-.6 1.7l-1.1 1.5c-.7.9 0 2.2 1.1 2.2h12.4c1.1 0 1.8-1.3 1.1-2.2l-1.1-1.5c-.4-.5-.6-1.1-.6-1.7V8.5c0-3.4-2.3-5.9-5.6-5.9Z" fill="#f5b851"/><path d="M9.6 19.3h4.8a2.4 2.4 0 0 1-4.8 0Z" fill="rgba(245,184,81,.45)"/></svg>
+      </div>
+      <h3>هشدارِ سر وقت</h3>
+      <p>هر ۲۰ ثانیه زمانِ قطعی‌ها با ساعت سیستم سنجیده می‌شود؛ دقیقاً همان‌قدر که تنظیم کرده‌اید زودتر، با اعلان + صدا خبرتان می‌کند.</p>
+    </div>
+    <div class="card">
+      <div class="f-icon" style="background:rgba(58,212,188,.15)">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13.4" r="3.4" fill="rgba(58,212,188,.4)"/><path d="M18.6 6.9a9 9 0 1 1-13.2.05" stroke="#3ad4bc" stroke-width="2.3" stroke-linecap="round"/><path d="M12 2.4v9.2" stroke="#3ad4bc" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>اقدامِ خودکار</h3>
+      <p>خاموش کردن، خواب یا خواب‌زمستانی — به انتخاب شما. اگر جواب ندهید، پنجره‌ی هشدار خودش اقدام پیش‌فرض را اجرا می‌کند.</p>
+    </div>
+    <div class="card">
+      <div class="f-icon" style="background:rgba(123,92,255,.16)">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="8.4" y="3.2" width="12.4" height="9.8" rx="2.8" fill="rgba(123,92,255,.4)"/><rect x="3.2" y="8.8" width="12.4" height="11.8" rx="2.8" fill="none" stroke="#a68cff" stroke-width="2.2"/></svg>
+      </div>
+      <h3>چند قبض، هم‌زمان</h3>
+      <p>خانه، مغازه و شرکت را با هم زیر پایش بگیرید؛ خاموشی همه در یک لیست با تبِ جدا برای هر قبض.</p>
+    </div>
+    <div class="card">
+      <div class="f-icon" style="background:rgba(123,92,255,.16)">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3.2 21.4h17.6" stroke="rgba(154,160,184,.6)" stroke-width="1.9" stroke-linecap="round"/><rect x="4.4" y="12.2" width="3.5" height="7.8" rx="1.7" fill="#8f6fff"/><rect x="10.25" y="8.4" width="3.5" height="11.6" rx="1.7" fill="rgba(143,111,255,.45)"/><rect x="16.1" y="5.6" width="3.5" height="14.4" rx="1.7" fill="#8f6fff"/></svg>
+      </div>
+      <h3>نمودار تاریخچه</h3>
+      <p>چند وقت است قطعی دارید و هر بار چقدر طول کشیده؟ آمار ۷ و ۳۰ روزه با نمودار مرتب.</p>
+    </div>
+    <div class="card">
+      <div class="f-icon" style="background:rgba(43,189,138,.14)">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="2.8" y="4.6" width="18.4" height="14.8" rx="3.2" fill="rgba(43,189,138,.3)"/><rect x="2.8" y="4.6" width="18.4" height="14.8" rx="3.2" fill="none" stroke="#2bbd8a" stroke-width="2"/><rect x="11.9" y="11.5" width="6.9" height="5.3" rx="1.6" fill="#2bbd8a"/></svg>
+      </div>
+      <h3>ویجت شناور</h3>
+      <p>شمارش معکوس تا قطعی بعدی، همیشه گوشه‌ی دسکتاپ — بدون باز کردن پنجره‌ی برنامه.</p>
+    </div>
+    <div class="card">
+      <div class="f-icon" style="background:rgba(244,89,108,.14)">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7.6" r="3.7" fill="#ff6b7d"/><path d="M2.6 19.1c0-3.9 2.9-6.3 6.4-6.3s6.4 2.4 6.4 6.3c0 .7-.5 1.2-1.2 1.2H3.8c-.7 0-1.2-.5-1.2-1.2Z" fill="#ff6b7d"/><circle cx="17.2" cy="8" r="2.6" fill="rgba(255,107,125,.45)"/></svg>
+      </div>
+      <h3>فارسی و انگلیسی</h3>
+      <p>رابط کاملاً راست‌چین با فونت‌های وزیرمتن و استعداد؛ با یک کلیک انگلیسیِ چپ‌چین می‌شود.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- گالری ---------- -->
+<section id="shots" class="wrap">
+  <div class="rtl-eyebrow">نگاهی داخل برنامه</div>
+  <h2>شیشه‌ای، تیره، آرام</h2>
+  <p class="sec-sub">تم تیره و روشن، هشدارِ خوانا و تنظیماتِ ساده — همه در خدمت «سر وقت خبردار شدن».</p>
+  <div class="shots">
+    <figure class="shot"><img src="assets/fa_light_dashboard.png" alt="داشبورد ناجی در تم روشن" loading="lazy"><figcaption>داشبورد در تم روشن</figcaption></figure>
+    <figure class="shot"><img src="assets/dark_warn.png" alt="پنجره هشدار قطعی برق" loading="lazy"><figcaption>پنجره‌ی هشدار «برق داره می‌ره!»</figcaption></figure>
+    <figure class="shot"><img src="assets/fa_light_settings.png" alt="تنظیمات ناجی" loading="lazy"><figcaption>تنظیمات: حالت هشدار و اقدام پیش‌فرض</figcaption></figure>
+    <figure class="shot"><img src="assets/dark_main_en.png" alt="Naji English UI" loading="lazy"><figcaption>همین برنامه، انگلیسی و چپ‌چین</figcaption></figure>
+  </div>
+</section>
+
+<!-- ---------- مراحل ---------- -->
+<section id="how" class="wrap">
+  <div class="rtl-eyebrow">سه قدم</div>
+  <h2>چطور کار می‌کند؟</h2>
+  <div class="steps" style="margin-top:40px">
+    <div class="step"><h3>با شماره موبایل وارد شوید</h3><p>ناجی داده‌اش را از سرویس رسمی «برق‌من» می‌خواند؛ ورود با همان شماره‌ای که آن‌جا دارید. شماره فقط برای همین است — هیچ سرور ابری دیگری در کار نیست.</p></div>
+    <div class="step"><h3>قبض را انتخاب کنید</h3><p>برق خانه، مغازه یا هرجای دیگر — حتی چند قبض با هم. از این بعد هر خاموشیِ ثبت‌شده در برق‌من، همین‌جا می‌آید.</p></div>
+    <div class="step"><h3>خیال راحت</h3><p>ناجی در تری می‌نشیند، مراقب است، سر وقت خبر می‌دهد و اگر نباشید، سیستم را خودش می‌خواباند یا خاموش می‌کند.</p></div>
+  </div>
+</section>
+
+<!-- ---------- سوالات ---------- -->
+<section id="faq" class="wrap">
+  <div class="rtl-eyebrow">خوب بدانید</div>
+  <h2>سوال‌های پرتکرار</h2>
+  <div style="margin-top:32px">
+    <details>
+      <summary>ناجی رایگان است؟</summary>
+      <p>بله، کاملاً رایگان و متن‌باز. داده‌ها فقط از حساب خودتان در برق‌من خوانده می‌شود.</p>
+    </details>
+    <details>
+      <summary>اگر فیلترشکن روشن باشد کار می‌کند؟</summary>
+      <p>سرور برق‌من IP خارج از ایران را می‌بندد؛ ناجی خودش این را تشخیص می‌دهد و راهنمایی می‌کند که برای saapa.ir قانون Direct بگذارید یا موقتاً VPN را خاموش کنید.</p>
+    </details>
+    <details>
+      <summary>اگر برق وسط کارِ ذخیره‌نشده برود؟</summary>
+      <p>هشدار چند دقیقه قبل می‌آید تا خودتان ذخیره کنید؛ اگر جواب ندادید، بسته به تنظیمات، ناجی در ثانیه‌های آخر سیستم را خواب یا خاموش می‌کند — خاموشیِ تمیز، بدون فایل خراب.</p>
+    </details>
+    <details>
+      <summary>مصرف منابعش چقدر است؟</summary>
+      <p>حدود ۱۰۰ مگابایت رم؛ انیمیشن‌ها روی ۲۴fps محدود شده‌اند تا از پردازنده و باتری لپ‌تاپ صرفه‌جویی شود.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ---------- CTA پایانی ---------- -->
+<section id="download" class="wrap">
+  <div class="final">
+    <h2>امشب اولین قطعی بدون استرس</h2>
+    <p>دانلود کنید، وارد شوید، بقیه‌اش با ناجی.</p>
+    <!-- ⚠️ آدرس ریپو را اینجا ویرایش کنید -->
+    <a class="btn btn-primary" href="https://github.com/USERNAME/bargh-monitor/releases/latest">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.47v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.82-2.34 4.66-4.57 4.91.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10 10 0 0 0 12 2Z"/></svg>
+      دانلود آخرین نسخه از GitHub Releases
+    </a>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p>ناجی یک برنامه‌ی غیررسمی است و به شرکت توزیع برق ارتباطی ندارد؛ همه‌ی داده‌ها از سرویس برق‌من می‌آید.</p>
+  <p>ساخته‌شده با <span class="heart">♥</span> برای برق ایران · <span class="latin">Aura Glass v6.0</span></p>
+</footer>
+
+</body>
+</html>
